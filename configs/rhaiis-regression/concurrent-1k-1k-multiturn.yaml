@@ -1,9 +1,9 @@
 ---
 metadata:
   labels:
-    name: concurrent-1k-1k-equal
+    name: concurrent-1k-1k-multiturn
     description: |
-      Prefill/Decode balanced scenario.
+      Multi-turn conversation scenario with prefix caching.
 spec:
   backend:
     kind: "openai_http"
@@ -14,6 +14,9 @@ spec:
   - kind: synthetic_text
     prompt_tokens: 1000
     output_tokens: 1000
+    turns: 5
+    prefix_tokens: 512
+    prefix_count: 10
   constraints:
   - kind: max_duration
     seconds: 450

@@ -4,8 +4,6 @@ metadata:
     name: concurrent-512-2ki-norm
     description: |
       Generation heavy scenario with sequence length variance.
-
-      Note: This scenario is optimized for NVIDIA H200s and may need to be adjusted for other hardware.
 spec:
   backend:
     kind: "openai_http"
@@ -24,17 +22,10 @@ spec:
     output_tokens_max: 4096
   constraints:
   - kind: max_duration
-    seconds: 600
+    seconds: 450
 benchmarks:
 - profile.streams: 1
-- profile.streams: 5
-- profile.streams: 25
 - profile.streams: 50
 - profile.streams: 100
-- profile.streams: 150
 - profile.streams: 200
-- profile.streams: 250
 - profile.streams: 300
-- profile.streams: 400
-- profile.streams: 500
-- profile.streams: 650

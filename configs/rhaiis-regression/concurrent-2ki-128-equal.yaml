@@ -4,8 +4,6 @@ metadata:
     name: concurrent-2ki-128-equal
     description: |
       Prefill heavy scenario.
-
-      Note: This scenario is optimized for NVIDIA H200s and may need to be adjusted for other hardware.
 spec:
   backend:
     kind: "openai_http"
@@ -18,12 +16,10 @@ spec:
     output_tokens: 128
   constraints:
   - kind: max_duration
-    seconds: 600
+    seconds: 450
 benchmarks:
 - profile.streams: 1
 - profile.streams: 50
 - profile.streams: 100
 - profile.streams: 200
 - profile.streams: 300
-- profile.streams: 500
-- profile.streams: 650
