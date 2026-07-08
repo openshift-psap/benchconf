@@ -20,10 +20,14 @@ spec:
     prefix_count: 1024  # ideally it should be 2*concurrency
   constraints:
   - kind: max_requests
-    count: [320, 640, 1280, 2560, 5120]
 benchmarks:
 - profile.streams: 32
+  constraints[0].count: 320
 - profile.streams: 64
+  constraints[0].count: 640
 - profile.streams: 128
+  constraints[0].count: 1280
 - profile.streams: 256
+  constraints[0].count: 2560
 - profile.streams: 512
+  constraints[0].count: 5120
