@@ -2,8 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent
-_CONFIGS_DIR = _REPO_ROOT / "configs"
+_CONFIGS_DIR = Path(__file__).resolve().parent / "configs"
 
 
 def get_config(suite: str, name: str) -> Path:
