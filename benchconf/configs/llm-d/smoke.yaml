@@ -17,6 +17,6 @@ spec:
     output_tokens: 128
   constraints:
   - kind: max_requests
-    value: 10
+    count: 10
 benchmarks:
 - profile.streams: 1
