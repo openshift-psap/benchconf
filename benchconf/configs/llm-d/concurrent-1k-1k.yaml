@@ -20,8 +20,8 @@ spec:
   - kind: max_duration
     seconds: 600
 benchmarks:
-- profile.streams: 300
-- profile.streams: 200
-- profile.streams: 100
-- profile.streams: 50
 - profile.streams: 1
+- profile.streams: 50
+- profile.streams: 100
+- profile.streams: 200
+- profile.streams: 300
