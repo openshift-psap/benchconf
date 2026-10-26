@@ -18,7 +18,7 @@ spec:
     output_tokens: 1000
   constraints:
   - kind: max_duration
-    seconds: 600
+    seconds: 275
 benchmarks:
 - profile.streams: 1
 - profile.streams: 50
