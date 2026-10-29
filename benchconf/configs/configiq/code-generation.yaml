@@ -1,0 +1,54 @@
+---
+metadata:
+  labels:
+    name: configiq-code-generation
+    description: |
+      Code generation agent. Approximate the catalog lognormal lengths and waits with bounded normal sampling, and variable turns with 540 fixed turns. The 990k opening tail needs a compatible model context; config.json wait max is 1000s versus 100s in inference-perf.yaml.
+    source_revision: 96a5010eefd92fc90cee260c33aba70fa0407984
+    catalog_profile: code-generation
+    profile_fidelity: approximate
+    catalog_input_distribution: lognormal
+    catalog_output_distribution: lognormal
+    catalog_turn_distribution: lognormal
+    catalog_wait_distribution: lognormal
+    optimization_target: prefix_aware_routing
+spec:
+  backend:
+    kind: "openai_http"
+    request_format: "/v1/chat/completions"
+    extras:
+      body:
+        temperature: 0.2
+  profile:
+    kind: knee
+    initial_streams: [1, 2, 5, 25, 50, 100, 200, 300]
+    adaptive: false
+    warmup: 75
+    rampup_duration: 35
+  data:
+  - kind: synthetic_text
+    prompt_tokens: 1500
+    prompt_tokens_stdev: 1200
+    prompt_tokens_min: 100
+    prompt_tokens_max: 10000
+    first_prompt_tokens: 160000
+    first_prompt_tokens_stdev: 233600
+    first_prompt_tokens_min: 10000
+    first_prompt_tokens_max: 990000
+    output_tokens: 425
+    output_tokens_stdev: 825
+    output_tokens_min: 50
+    output_tokens_max: 10000
+    turns: 540
+    delay: 15
+    delay_stdev: 55
+    delay_min: 1
+    delay_max: 1000
+    prefix_count: 1
+    prefix_tokens: 3000
+  seed:
+    kind: static
+    value: 42
+  constraints:
+  - kind: max_duration
+    seconds: 21600

@@ -1,0 +1,54 @@
+---
+metadata:
+  labels:
+    name: configiq-interactive-chat
+    description: |
+      Interactive chat. Approximate the catalog lognormal input and wait distributions with bounded normal sampling, and variable turns with four fixed turns.
+    source_revision: 96a5010eefd92fc90cee260c33aba70fa0407984
+    catalog_profile: interactive-chat
+    profile_fidelity: approximate
+    catalog_input_distribution: lognormal
+    catalog_output_distribution: normal
+    catalog_turn_distribution: lognormal
+    catalog_wait_distribution: lognormal
+    optimization_target: prefix_aware_routing
+spec:
+  backend:
+    kind: "openai_http"
+    request_format: "/v1/chat/completions"
+    extras:
+      body:
+        temperature: 0.8
+  profile:
+    kind: knee
+    initial_streams: [1, 2, 5, 25, 50, 100, 200, 300]
+    adaptive: false
+    warmup: 75
+    rampup_duration: 35
+  data:
+  - kind: synthetic_text
+    prompt_tokens: 50
+    prompt_tokens_stdev: 40
+    prompt_tokens_min: 10
+    prompt_tokens_max: 1000
+    first_prompt_tokens: 4000
+    first_prompt_tokens_stdev: 2500
+    first_prompt_tokens_min: 500
+    first_prompt_tokens_max: 15000
+    output_tokens: 300
+    output_tokens_stdev: 150
+    output_tokens_min: 10
+    output_tokens_max: 1000
+    turns: 4
+    delay: 45
+    delay_stdev: 40
+    delay_min: 5
+    delay_max: 300
+    prefix_count: 1
+    prefix_tokens: 1000
+  seed:
+    kind: static
+    value: 42
+  constraints:
+  - kind: max_duration
+    seconds: 1200
