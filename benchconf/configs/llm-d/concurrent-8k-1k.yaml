@@ -19,8 +19,6 @@ spec:
   constraints:
   - kind: max_duration
     seconds: 275
-  - kind: samples
-    count: 50
 benchmarks:
 - profile.streams: 1
 - profile.streams: 25
