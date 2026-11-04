@@ -34,4 +34,4 @@ spec:
     value: 42
   constraints:
   - kind: max_duration
-    seconds: 275
+    seconds: 1800
