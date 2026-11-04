@@ -3,31 +3,29 @@ metadata:
   labels:
     name: multi-turn
     description: |
-      Multi-turn conversation scenario with prefix caching.
-      Requires min_max_model_len >= 40960 on the serving side.
+      RHAIIS-aligned multi-turn conversation scenario with prefix caching.
 spec:
   backend:
     kind: "openai_http"
     request_format: "/v1/chat/completions"
   profile:
     kind: concurrent
+    rampup_duration: 35
+    warmup: 75
   data:
   - kind: synthetic_text
     prompt_tokens: 128
     output_tokens: 128
     turns: 5
-    prefix_tokens: 10000
-    prefix_count: 1024  # ideally it should be 2*concurrency
+    prefix_tokens: 512
+    prefix_count: 10000
   constraints:
-  - kind: max_requests
+  - kind: max_duration
+    seconds: 275
 benchmarks:
+- profile.streams: 1
 - profile.streams: 32
-  constraints[0].count: 320
 - profile.streams: 64
-  constraints[0].count: 640
 - profile.streams: 128
-  constraints[0].count: 1280
 - profile.streams: 256
-  constraints[0].count: 2560
 - profile.streams: 512
-  constraints[0].count: 5120
