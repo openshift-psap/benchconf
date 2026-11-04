@@ -4,14 +4,6 @@ metadata:
     name: configiq-reasoning
     description: |
       Deep thinking. Catalog lognormal input and exponential output are approximated with bounded normal sampling. One request per conversation.
-    source_revision: 96a5010eefd92fc90cee260c33aba70fa0407984
-    catalog_profile: reasoning
-    profile_fidelity: approximate
-    catalog_input_distribution: lognormal
-    catalog_output_distribution: exponential
-    catalog_turn_distribution: fixed
-    catalog_wait_distribution: none
-    optimization_target: prefill_decode_disaggregation
 spec:
   backend:
     kind: "openai_http"
