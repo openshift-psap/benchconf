@@ -20,7 +20,7 @@ The single source of truth for PSAP inference workload shapes. Config names foll
 `smoke` is the minimal endpoint-verification workload.
 
 All profiles share the same run semantics: increasing stream order, 275s max
-duration per rate (450s for long-turn multiturn), rampup 35s, warmup 75s.
+duration per rate, rampup 35s, warmup 75s. smoke runs 10 requests at concurrency 1.
 `smoke` runs 10 requests at concurrency 1.
 
 ### Deprecated suites
@@ -39,4 +39,3 @@ pure rename:
 | concurrent-8k-800-norm | concurrent-heavy-heterogeneous | concurrent-8k-800-norm |
 | concurrent-100k-1k-equal | heavy-load | concurrent-100k-1k-equal |
 | concurrent-128-128-multiturn | multi-turn | concurrent-128-128-multiturn |
-| concurrent-1k-1k-multiturn | — | concurrent-1k-1k-multiturn |
