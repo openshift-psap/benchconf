@@ -9,8 +9,8 @@ def get_config(suite: str, name: str) -> Path:
     """Return the filesystem path to a benchmark config file.
 
     Args:
-        suite: Config suite directory (e.g. "llm-d", "rhaiis-regression").
-        name: Benchmark name without extension (e.g. "concurrent-1k-1k").
+        suite: Config suite directory (e.g. "psap-inference").
+        name: Benchmark name without extension (e.g. "concurrent-1k-1k-equal").
 
     Returns:
         Path to the YAML config file.
@@ -21,9 +21,9 @@ def get_config(suite: str, name: str) -> Path:
     Example::
 
         >>> import benchconf
-        >>> path = benchconf.get_config("llm-d", "concurrent-1k-1k")
+        >>> path = benchconf.get_config("psap-inference", "concurrent-1k-1k-equal")
         >>> path.name
-        'concurrent-1k-1k.yaml'
+        'concurrent-1k-1k-equal.yaml'
     """
     path = _CONFIGS_DIR / suite / f"{name}.yaml"
     if not path.exists():
@@ -70,7 +70,7 @@ def load_config(suite: str, name: str) -> dict:
     """Load and parse a benchmark config file as a dictionary.
 
     Args:
-        suite: Config suite directory (e.g. "llm-d").
+        suite: Config suite directory (e.g. "psap-inference").
         name: Benchmark name without extension.
 
     Returns:
