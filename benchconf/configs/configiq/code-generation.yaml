@@ -3,7 +3,7 @@ metadata:
   labels:
     name: configiq-code-generation
     description: |
-      Code generation agent. Approximate the catalog lognormal lengths and waits with bounded normal sampling, and variable turns with 540 fixed turns. The 990k opening tail needs a compatible model context; config.json wait max is 1000s versus 100s in inference-perf.yaml.
+      Long-context coding-agent scenario with a 160K opening prompt and a 540-turn conversation.
 spec:
   backend:
     kind: "openai_http"

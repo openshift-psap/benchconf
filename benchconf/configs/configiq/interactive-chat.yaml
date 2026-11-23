@@ -3,7 +3,7 @@ metadata:
   labels:
     name: configiq-interactive-chat
     description: |
-      Interactive chat. Approximate the catalog lognormal input and wait distributions with bounded normal sampling, and variable turns with four fixed turns.
+      Multi-turn chat with a 4K opening prompt, short follow-up turns, and 300-token responses.
 spec:
   backend:
     kind: "openai_http"
@@ -11,6 +11,7 @@ spec:
     extras:
       body:
         temperature: 0.8
+        ignore_eos: false
   profile:
     kind: knee
     initial_streams: [1, 2, 5, 25, 50, 100, 200, 300]
@@ -43,4 +44,4 @@ spec:
     value: 42
   constraints:
   - kind: max_duration
-    seconds: 1200
+    seconds: 275
