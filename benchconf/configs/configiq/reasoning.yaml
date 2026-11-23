@@ -3,7 +3,7 @@ metadata:
   labels:
     name: configiq-reasoning
     description: |
-      Deep thinking. Catalog lognormal input and exponential output are approximated with bounded normal sampling. One request per conversation.
+      Single-turn reasoning scenario with a 1K prompt and an 8K response.
 spec:
   backend:
     kind: "openai_http"
@@ -19,6 +19,7 @@ spec:
     rampup_duration: 35
   data:
   - kind: synthetic_text
+    turns: 1
     prompt_tokens: 1000
     prompt_tokens_stdev: 800
     prompt_tokens_min: 100

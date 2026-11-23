@@ -3,7 +3,7 @@ metadata:
   labels:
     name: configiq-batch-summarization-rag
     description: |
-      Batch summarization and RAG. Catalog bimodal input is approximated with bounded normal sampling; normal output is preserved. One request per conversation.
+      Offline batch summarization/RAG scenario with long inputs and concise responses.
 spec:
   backend:
     kind: "openai_http"
@@ -19,6 +19,7 @@ spec:
     rampup_duration: 35
   data:
   - kind: synthetic_text
+    turns: 1
     prompt_tokens: 15000
     prompt_tokens_stdev: 22000
     prompt_tokens_min: 1000

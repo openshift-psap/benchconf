@@ -3,7 +3,7 @@ metadata:
   labels:
     name: configiq-deep-research
     description: |
-      Deep research agent. Catalog config.json has exponential opening input and bimodal output; GuideLLM synthetic_text approximates both with bounded normal sampling. Variable turns are represented by 15 fixed turns.
+      Long-context research-agent scenario with a 45K opening prompt, 15 turns, and concise responses.
 spec:
   backend:
     kind: "openai_http"

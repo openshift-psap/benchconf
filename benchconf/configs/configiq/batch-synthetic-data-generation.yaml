@@ -3,7 +3,7 @@ metadata:
   labels:
     name: configiq-batch-synthetic-data-generation
     description: |
-      Synthetic data generation. Catalog lognormal input is approximated with bounded normal sampling. Uniform output keeps the 500-8000 bounds; its midpoint is 4250 rather than the catalog stated mean of 4000.
+      Synthetic data generation with short prompts and long outputs from 500 to 8K tokens.
 spec:
   backend:
     kind: "openai_http"
@@ -19,6 +19,7 @@ spec:
     rampup_duration: 35
   data:
   - kind: synthetic_text
+    turns: 1
     prompt_tokens: 500
     prompt_tokens_stdev: 1200
     prompt_tokens_min: 50
