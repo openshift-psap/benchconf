@@ -14,7 +14,7 @@ spec:
   profile:
     kind: knee
     initial_streams: [1, 2, 5, 25, 50, 100, 200, 300]
-    adaptive: false
+    adaptive: true
     warmup: 75
     rampup_duration: 35
   data:
